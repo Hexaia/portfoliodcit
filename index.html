@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CJae · Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#FBF6F9; --surface:#FFFFFF; --ink:#3A2B4D; --muted:#6F6280; --line:#E6D9EA;
+  --pink:#F7CFDD; --lilac:#DCD0F6; --mint:#CDEBDD; --butter:#FFE29A; --accent:#7A55C9; --accent-ink:#FFFFFF;
+  --shadow:#3A2B4D;
+  --display:'Fredoka','Trebuchet MS',system-ui,sans-serif; --body:'Nunito Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1E1728; --surface:#2A2037; --ink:#F3EBFA; --muted:#BCAFCB; --line:#443759;
+    --pink:#5A3550; --lilac:#43375F; --mint:#2F4A44; --butter:#5E4F26; --accent:#B79CF5; --accent-ink:#1E1728; --shadow:#0E0A14;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1E1728; --surface:#2A2037; --ink:#F3EBFA; --muted:#BCAFCB; --line:#443759;
+  --pink:#5A3550; --lilac:#43375F; --mint:#2F4A44; --butter:#5E4F26; --accent:#B79CF5; --accent-ink:#1E1728; --shadow:#0E0A14;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+section{padding:72px 0 24px}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:600 1.3rem var(--display);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:30px;height:30px;border-radius:50%;background:var(--butter);display:grid;place-items:center;font-style:normal;font-size:.95rem;border:2px solid var(--ink)}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;font-weight:700;padding:8px 14px;border-radius:99px;font-size:.95rem}
+nav ul a:hover{background:var(--lilac)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding-top:64px}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);margin-bottom:16px}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:46ch;margin:0 0 26px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:99px;border:2px solid var(--ink);background:var(--accent);color:var(--accent-ink);box-shadow:4px 4px 0 var(--shadow);transition:transform .15s,box-shadow .15s;cursor:pointer;font-family:var(--body);font-size:1rem}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shadow)}
+.btn.alt{background:var(--surface);color:var(--ink);margin-left:8px}
+.avatar{position:relative;justify-self:center;width:min(300px,70vw);aspect-ratio:1;border-radius:46% 54% 50% 50%/52% 46% 54% 48%;background:var(--pink);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--shadow);display:grid;place-items:center;font:600 5.5rem var(--display);color:var(--ink);animation:wob 7s ease-in-out infinite}
+.avatar small{position:absolute;bottom:-14px;right:-6px;background:var(--butter);border:2px solid var(--ink);border-radius:99px;padding:4px 14px;font:700 .85rem var(--body);transform:rotate(-6deg)}
+@keyframes wob{50%{border-radius:52% 48% 46% 54%/46% 54% 48% 52%}}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr;gap:28px;margin-top:22px;max-width:720px}
+.card{background:var(--surface);border:2px solid var(--ink);border-radius:22px;padding:26px;box-shadow:5px 5px 0 var(--shadow)}
+.card h3{font-size:1.3rem;margin-bottom:10px}
+.card p{margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.chips li{padding:5px 13px;border-radius:99px;font-weight:700;font-size:.9rem;border:2px solid var(--ink);background:var(--mint)}
+.chips li:nth-child(3n+2){background:var(--lilac)}
+.chips li:nth-child(3n){background:var(--butter)}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px}
+dt{font-weight:700;color:var(--muted)}dd{margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+.sub{color:var(--muted);margin:6px 0 0;max-width:56ch}
+
+/* file explorer */
+.win{margin-top:26px;border:2px solid var(--ink);border-radius:22px;background:var(--surface);box-shadow:6px 6px 0 var(--shadow);overflow:hidden}
+.bar{display:flex;align-items:center;gap:8px;padding:12px 18px;background:var(--lilac);border-bottom:2px solid var(--ink)}
+.dot{width:13px;height:13px;border-radius:50%;border:2px solid var(--ink)}
+.dot:nth-child(1){background:var(--pink)}.dot:nth-child(2){background:var(--butter)}.dot:nth-child(3){background:var(--mint)}
+.path{margin-left:10px;font:700 .9rem var(--body);background:var(--surface);border:2px solid var(--ink);border-radius:99px;padding:2px 14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.explorer{display:grid;grid-template-columns:210px 1fr;min-height:380px}
+.side{border-right:2px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:6px}
+.side button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:700 1rem var(--body);color:var(--ink);background:none;border:2px solid transparent;border-radius:14px;padding:10px 12px;cursor:pointer}
+.side button:hover{background:var(--bg)}
+.side button[aria-selected="true"]{background:var(--pink);border-color:var(--ink)}
+.side .n{margin-left:auto;font-size:.8rem;background:var(--surface);border:2px solid var(--ink);border-radius:99px;padding:0 8px}
+.files{padding:14px 18px 20px}
+.row{display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;padding:12px;border-radius:14px;border:2px solid transparent;width:100%;text-align:left;background:none;color:inherit;font:inherit;cursor:pointer}
+.row:hover,.row[aria-expanded="true"]{background:var(--bg);border-color:var(--line)}
+.ico{width:36px;height:36px;border-radius:10px;border:2px solid var(--ink);display:grid;place-items:center;font-size:1.1rem;background:var(--butter)}
+.row b{display:block;font-weight:700}
+.row span.meta{color:var(--muted);font-size:.88rem}
+.tag{font-weight:700;font-size:.85rem;background:var(--mint);border:2px solid var(--ink);border-radius:99px;padding:2px 12px;white-space:nowrap}
+.detail{display:none;margin:2px 0 8px 50px;padding:14px 16px;background:var(--bg);border:2px dashed var(--line);border-radius:14px}
+.detail.open{display:block}
+.detail p{margin:0 0 10px;font-size:.98rem}
+.detail .btn{padding:7px 16px;font-size:.9rem;box-shadow:3px 3px 0 var(--shadow)}
+.hint{color:var(--muted);font-size:.9rem;margin:10px 4px 0}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px}
+label{display:block;font-weight:700;margin-bottom:12px;font-size:.95rem}
+input,textarea{display:block;width:100%;margin-top:5px;font:400 1rem var(--body);color:var(--ink);background:var(--bg);border:2px solid var(--ink);border-radius:14px;padding:10px 14px}
+textarea{min-height:110px;resize:vertical}
+.links{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.links a{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;padding:12px 14px;border:2px solid var(--ink);border-radius:16px;background:var(--bg)}
+.links a:hover{background:var(--lilac)}
+footer{text-align:center;color:var(--muted);padding:56px 0 40px;font-size:.92rem}
+
+@media (max-width:760px){
+  .hero,.about,.contact{grid-template-columns:1fr}
+  .explorer{grid-template-columns:1fr}
+  .side{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:2px solid var(--line)}
+  .side button{white-space:nowrap;width:auto}
+  .detail{margin-left:0}
+  nav ul a{padding:8px 9px}
+  .btn.alt{margin:10px 0 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+  <a class="logo" href="#top"><i>✿</i>CJae</a>
+  <ul><li><a href="#about">About</a></li><li><a href="#files">Files</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav></div></header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <h1>Hi, I'm Cristine Jae Gonzales. Nice to meet you!</h1>
+      <p>I'm a BSCS 3rd year student who loves turning ideas into neat, working things. Browse my outputs in DCIT26 below.</p>
+      <a class="btn" href="#files">Open my files</a><a class="btn alt" href="#contact">Say hello</a>
+    </div>
+    <div class="avatar" aria-hidden="true"><img src="myimage.jpg"><small>open to opportunities</small></div>
+  </div>
+
+  <section id="about">
+    <h2>About me</h2>
+    <p class="sub">A little about who I am and what I'm working on.</p>
+    <div class="about">
+      <div class="card">
+        <h3>Get to know me</h3>
+        <p>I'm a 3rd year computer science student who enjoys
+          learning new things and finding ways to improve myself.
+        </p>
+        <p>Outside academics, I enjoy reading, gaming, journaling,
+          and exploring different interests that help me grow as a person.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="files">
+    <h2>My files</h2>
+    <p class="sub">Pick a folder, then select a file to see details and open it.</p>
+    <div class="win">
+      <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="path" id="path">~/portfolio/quizzes</span></div>
+      <div class="explorer">
+        <div class="side" role="tablist" aria-label="Folders" id="side"></div>
+        <div class="files" id="list" role="tabpanel"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="sub">Questions, collaborations or opportunities? I'd love to hear from you.</p>
+    <div class="contact">
+      <div class="card">
+        <h3>Send a message</h3>
+        <label>Your name<input id="cn" autocomplete="name"></label>
+        <label>Message<textarea id="cm"></textarea></label>
+        <button class="btn" id="send" type="button"><a>Write email</button></a></button>
+      </div>
+      <div class="card">
+        <h3>Find me online</h3>
+        <ul class="links">
+          <li><a href="mailto:cristinejae.gonzales@cvsu.edu.ph">✉️ cristinejae.gonzales@cvsu.edu.ph</a></li>
+          <li><a href="https://github.com/Hexaia/cristinejaegonzales">🐙 GitHub profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Made with care · © <span id="yr"></span> CJae</footer>
+
+<script>
+const DATA={
+  quizzes:{icon:"✏️",items:[
+    {t:"Quiz 1: Emerging Technologies",d:"Oct 2026",tag:"20/20", u:"https://drive.google.com/file/d/1IV3_HHAmw9dFSvlspBWIAc86qcAH5Uo9/view?usp=sharing"},
+    {t:"Quiz 2: Requirements Analysis & Unified Modeling Language",d:"Sep 2026",tag:"#/20",},
+    {t:"Quiz 3: The SOLID Principles",d:"Oct 2026",tag:"#/20",},
+    {t:"Long Quiz", d: "Oct 2026", tag:"#/20"}]},
+  exams:{icon:"📝",items:[
+    {t:"Midterm Exam",d:"Oct 2026",tag:"50/70",},
+    {t:"Final Exam",d:"Dec 2026",tag:"Upcoming",}]},
+  activities:{icon:"🎨",items:[
+    {t:"Activity 1",d:"Sep 2026",tag:"Done",u:"https://docs.google.com/document/d/1eLXSH-ssMKevcUBeiDQzyLXPOi5qyy7z/edit?usp=sharing&ouid=117744539231309835454&rtpof=true&sd=true"},
+    {t:"Activity 2",d:"Sep 2026",tag:"Done",u:"https://docs.google.com/document/d/1iBfxxyYXjicOwmUQVITiSrNnDTuwH2gf0_1gPfP1a-M/edit?usp=sharing"},
+    ]},
+  projects:{icon:"🚀",items:[
+    {t:"###",d:"Oct 2026",tag:"In progress",}]}
+};
+const side=document.getElementById('side'),list=document.getElementById('list'),path=document.getElementById('path');
+let cur='quizzes';
+function cap(s){return s[0].toUpperCase()+s.slice(1)}
+function render(){
+  side.innerHTML='';
+  for(const k in DATA){
+    const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-selected',k===cur);
+    b.innerHTML=`<span>${DATA[k].icon}</span>${cap(k)}<span class="n">${DATA[k].items.length}</span>`;
+    b.onclick=()=>{cur=k;render()};side.appendChild(b);
+  }
+  path.textContent='~/portfolio/'+cur;
+  list.innerHTML='';
+  DATA[cur].items.forEach((f,i)=>{
+    const r=document.createElement('button');r.type='button';r.className='row';r.setAttribute('aria-expanded','false');
+    r.innerHTML=`<span class="ico">${DATA[cur].icon}</span><span><b>${f.t}</b><span class="meta">${f.d}</span></span><span class="tag">${f.tag}</span>`;
+    const d=document.createElement('div');d.className='detail';
+    d.innerHTML=(f.u?`<a class="btn" href="${f.u}" target="_blank" rel="noopener">Open file</a>`:`<p class="hint">No file linked yet.</p>`);
+    r.onclick=()=>{const o=d.classList.toggle('open');r.setAttribute('aria-expanded',o)};
+    list.append(r,d);
+  });
+}
+render();
+document.getElementById('send').onclick=()=>{
+  const n=document.getElementById('cn').value,m=document.getElementById('cm').value;
+  window.open('https://mail.google.com/mail/?view=cm&to=cristinejae.gonzales@cvsu.edu.ph&su='+encodeURIComponent('Hello from '+(n||'your portfolio'))+'&body='+encodeURIComponent(m),'_blank');
+};
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
